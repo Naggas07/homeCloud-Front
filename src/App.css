@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+/* my css */
+
+.primary-button {
+  background-color: #61dafb !important;
+  border: aliceblue 2px solid !important;
+  color: white !important;
+  font-size: 1.5rem !important;
+}
+
+.form {
+  width: 90%;
+}

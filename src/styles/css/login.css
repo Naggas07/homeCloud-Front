@@ -1,4 +1,35 @@
 .loginBack {
   height: 100vh;
-  background-color: rgba(0, 140, 255, 0.904);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 56%,
+    rgba(0, 180, 217, 1) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  width: 80%;
+  min-height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: red; */
+}
+
+.logo {
+  margin: 10% 0;
+}
+
+.tittle-text {
+  font-family: "Piedra", cursive;
+  font-size: 3rem;
+}
+
+.login-font {
+  font-family: "Piedra", cursive;
 }
