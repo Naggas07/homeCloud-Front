@@ -3,6 +3,7 @@ import "../styles/css/login.css";
 import logo from "../styles/images/cloud-icon.png";
 import { WithAuthConsumer } from "../context/auth.context";
 import { Redirect } from "react-router-dom";
+import userServices from "../services/user.services";
 
 class Login extends Component {
   constructor(props) {
@@ -28,6 +29,24 @@ class Login extends Component {
       },
     });
   };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    const { userData } = this.state;
+
+    this.setState({ loading: true, error: false }, () => {
+      userServices
+        .login(userData)
+        .then((user) => {
+          this.props.setUser(user);
+        })
+        .catch(() => {
+          this.setState({ error: true, loading: false });
+        });
+    });
+  };
+
   render() {
     if (this.props.currentUser) {
       return <Redirect to="/home" />;
@@ -40,7 +59,7 @@ class Login extends Component {
             <h3 className="tittle-text">myCloud</h3>
           </div>
           <div className="form login-font">
-            <form className="form-margins">
+            <form className="form-margins" onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <input
                   type="email"
