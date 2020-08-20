@@ -1,13 +1,37 @@
 import React, { Component } from "react";
 import "../styles/css/login.css";
 import logo from "../styles/images/cloud-icon.png";
+import { WithAuthConsumer } from "../context/auth.context";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userData: {
+        email: "",
+        password: "",
+      },
+      error: false,
+      loading: false,
+      success: false,
+    };
   }
+
+  handleChange = (event) => {
+    const { name, value, files } = event.target;
+
+    this.setState({
+      userData: {
+        ...this.state.userData,
+        [name]: files ? files[0] : value,
+      },
+    });
+  };
   render() {
+    if (this.props.currentUser) {
+      return <Redirect to="/home" />;
+    }
     return (
       <div className="loginBack">
         <div className="login-container">
@@ -22,6 +46,8 @@ class Login extends Component {
                   type="email"
                   className="form-control"
                   name="email"
+                  value={this.state.userData.email}
+                  onChange={this.handleChange}
                   autoComplete="off"
                   placeholder="email"
                 />
@@ -31,6 +57,8 @@ class Login extends Component {
                   type="password"
                   className="form-control"
                   name="password"
+                  value={this.state.userData.password}
+                  onChange={this.handleChange}
                   autoComplete="off"
                   placeholder="Contraseña"
                 />
@@ -46,4 +74,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default WithAuthConsumer(Login);
