@@ -1,11 +1,12 @@
 import axios from "axios";
-import dontenv from "dotenv";
+require("dotenv").config();
 
-const API_URL = "http://localhost:5000" || process.env.API;
-console.log(API_URL);
+const API = process.env.REACT_APP_API || "http://localhost:5000";
+
+console.log(API);
 
 const http = axios.create({
-  baseURL: API_URL,
+  baseURL: API,
   withCredentials: true,
 });
 
