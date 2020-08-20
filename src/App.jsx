@@ -6,7 +6,15 @@ import { Switch, Route, Redirect } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <Switch></Switch>
+      <Switch>
+        <Route exact path="/login">
+          <p>login</p>
+        </Route>
+        <Route exact path="/home">
+          <p>Home</p>
+        </Route>
+        <Redirect to="/login" />
+      </Switch>
     </div>
   );
 }
