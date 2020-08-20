@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import "../styles/css/login.css";
 
 class Login extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ class Login extends Component {
     this.state = {};
   }
   render() {
-    return <div className="">hola</div>;
+    return <div className="loginBack">hola</div>;
   }
 }
 
