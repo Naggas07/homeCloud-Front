@@ -48,6 +48,8 @@ class Login extends Component {
   };
 
   render() {
+    const errorClassName = this.state.error ? "is-invalid" : "";
+
     if (this.props.currentUser) {
       return <Redirect to="/home" />;
     }
@@ -63,7 +65,7 @@ class Login extends Component {
               <div className="form-group">
                 <input
                   type="email"
-                  className="form-control"
+                  className={`form-control ${errorClassName}`}
                   name="email"
                   value={this.state.userData.email}
                   onChange={this.handleChange}
@@ -74,14 +76,18 @@ class Login extends Component {
               <div className="form-group">
                 <input
                   type="password"
-                  className="form-control"
+                  className={`form-control ${errorClassName}`}
                   name="password"
                   value={this.state.userData.password}
                   onChange={this.handleChange}
                   autoComplete="off"
                   placeholder="Contraseña"
                 />
+                <div className="invalid-feedback padding-0">
+                  Usuario/Contraseña erroneos
+                </div>
               </div>
+
               <button type="submit" className="btn btn-block primary-button">
                 Login
               </button>
