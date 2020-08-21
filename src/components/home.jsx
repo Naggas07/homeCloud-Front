@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+// import { Switch, Route, Redirect } from "react-router-dom";
+import NavBar from "./misc/navbar";
 
 class Home extends Component {
   constructor(props) {
@@ -6,7 +8,12 @@ class Home extends Component {
     this.state = {};
   }
   render() {
-    return <h1>Home</h1>;
+    return (
+      <Fragment>
+        <NavBar />
+        <h1>Hola</h1>
+      </Fragment>
+    );
   }
 }
 

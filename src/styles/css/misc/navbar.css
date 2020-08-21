@@ -1,0 +1,45 @@
+.navbar {
+  width: 100%;
+  height: 10vh;
+  background-color: rgba(0, 180, 217, 1);
+}
+
+.flex-center2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoContainer {
+}
+
+.navLogo {
+  width: 40px;
+}
+
+.navName {
+  height: 100%;
+  color: aliceblue;
+  font-family: "Piedra", cursive;
+  font-size: 1rem;
+  padding: 10px;
+  margin-top: 7px;
+}
+
+.logoutContainer {
+  margin-right: 5px;
+}
+
+.white {
+  color: aliceblue;
+}
+
+.offSize {
+  font-size: 1.5rem;
+}
+
+@media only screen and (min-width: 900px) {
+  .navbar {
+    height: 7vh;
+  }
+}
