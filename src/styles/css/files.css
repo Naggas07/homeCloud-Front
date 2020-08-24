@@ -7,6 +7,7 @@
   justify-content: space-between;
   vertical-align: center;
   padding: 5px 10px;
+  color: rgb(104, 104, 104);
 }
 
 .logo-back {
@@ -31,17 +32,28 @@
 
 .file-container {
   width: 45%;
-  border: 1px solid rgb(0, 180, 217, 0.2);
+  border: 1px solid rgb(0, 180, 217, 0);
   margin: 2%;
+}
+
+.header-list-items > h1 {
+  font-size: 2rem;
+  font-style: bold;
 }
 
 .icon-list {
   color: rgb(0, 180, 217, 1);
-  font-size: 4rem;
+  font-size: 5rem;
   padding: 5%;
   z-index: inherit;
 }
 
 .fileName {
   font-size: 1rem;
+}
+
+.add-icon {
+  font-size: 1.8rem;
+  color: rgb(0, 180, 217, 1);
+  margin: 5px 10px;
 }

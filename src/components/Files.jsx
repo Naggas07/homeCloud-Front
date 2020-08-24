@@ -4,9 +4,11 @@ import "../styles/css/files.css";
 import filesFoldersService from "../services/pathFilesServices";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowCircleLeft";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
+import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import { faFileImage } from "@fortawesome/free-solid-svg-icons/faFileImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import File from "./visual/file";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 class Files extends Component {
   constructor(props) {
@@ -82,6 +84,9 @@ class Files extends Component {
           <div className="folders">
             <div className="header-list-items">
               <h1>carpetas</h1>
+              {this.state.path !== "" && (
+                <FontAwesomeIcon className="add-icon" icon={faFolderPlus} />
+              )}
             </div>
             <div className="items-list-items">
               {this.state.folders.map((folder, index) => (
@@ -105,6 +110,9 @@ class Files extends Component {
           <div className="files">
             <div className="header-list-items">
               <h1>archivos</h1>
+              {this.state.path !== "" && (
+                <FontAwesomeIcon className="add-icon" icon={faPlus} />
+              )}
             </div>
             <div className="items-list-items">
               {this.state.files.map((file, index) => (
