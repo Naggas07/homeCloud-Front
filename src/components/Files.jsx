@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { WithAuthConsumer } from "../context/auth.context";
 import "../styles/css/files.css";
 import filesFoldersService from "../services/pathFilesServices";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowCircleLeft";
+import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import File from "./visual/file";
 
 class Files extends Component {
   constructor(props) {
@@ -14,15 +18,34 @@ class Files extends Component {
     };
   }
 
+  back = () => {
+    const back = this.state.path.split("-");
+    const lastPath = back.slice(0, back.length - 1).join("-");
+
+    if (back.length === 1) {
+      this.setState({
+        path: "",
+        folders: this.props.currentUser.data.folders,
+        files: [],
+      });
+    } else {
+      this.reload(lastPath);
+    }
+  };
+
   update = (event) => {
     const { id } = event.target;
     let nextPath = this.state.path === "" ? id : `${this.state.path}-${id}`;
 
+    this.reload(nextPath);
+  };
+
+  reload = (path) => {
     filesFoldersService
-      .getFolder(nextPath)
+      .getFolder(path)
       .then((data) => {
         this.setState({
-          path: nextPath,
+          path: path,
           folders: data.folders,
           files: data.files,
           nextPath: "",
@@ -37,16 +60,34 @@ class Files extends Component {
 
   render() {
     return (
-      <div className="func-container red">
-        <div className="breads">{this.state.path}</div>
+      <div className="func-container">
+        <div className="breads">
+          <p>
+            /{this.state.path.length > 0 && this.state.path.replace("-", "/")}
+          </p>
+          <FontAwesomeIcon
+            className="logo-back"
+            onClick={this.back}
+            icon={faArrowCircleLeft}
+          />
+        </div>
         {this.state.folders.length > 0 && (
           <div className="folders">
-            <h1>Folders</h1>
-            {this.state.folders.map((folder, index) => (
-              <h1 id={folder} value={folder} onClick={this.update} key={index}>
-                {folder}
-              </h1>
-            ))}
+            <div className="header-list-items">
+              <h1>folders</h1>
+            </div>
+            <div className="items-list-items">
+              {this.state.folders.map((folder, index) => (
+                <div
+                  id={folder}
+                  className="file-container"
+                  onClick={this.update}
+                  key={index}
+                >
+                  <File name={folder} icon={faFolder} />
+                </div>
+              ))}
+            </div>
           </div>
         )}
         {this.state.files.length > 0 && (

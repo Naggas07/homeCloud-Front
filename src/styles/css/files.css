@@ -1,3 +1,40 @@
 .red {
   background-color: red;
 }
+
+.breads {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: center;
+  padding: 5px 10px;
+}
+
+.logo-back {
+  color: rgb(0, 180, 217, 1);
+  font-size: 2rem;
+}
+
+.header-list-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.items-list-items {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.file-container {
+  width: 45%;
+  border: 1px solid rgb(0, 180, 217, 0.2);
+  margin: 2%;
+}
+
+.icon-list {
+  color: rgb(0, 180, 217, 1);
+  font-size: 4rem;
+}
