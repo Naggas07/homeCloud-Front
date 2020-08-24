@@ -4,6 +4,7 @@ import { WithAuthConsumer } from "../context/auth.context";
 import "../styles/css/misc/home.css";
 import { faTools } from "@fortawesome/free-solid-svg-icons/faTools";
 import { faFile } from "@fortawesome/free-solid-svg-icons/faFile";
+import { Redirect } from "react-router-dom";
 
 class HomeSearch extends Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class HomeSearch extends Component {
     }
   }
   render() {
+    if (this.props.currentUser.data.userType !== "Admin") {
+      return <Redirect to="/files" />;
+    }
     return (
       <Fragment>
         <div className="func-container">
