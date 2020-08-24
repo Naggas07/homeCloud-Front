@@ -19,6 +19,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .items-list-items {
@@ -46,6 +47,11 @@
   font-size: 5rem;
   padding: 5%;
   z-index: inherit;
+}
+
+.image-list {
+  width: 70px;
+  height: 70px;
 }
 
 .fileName {

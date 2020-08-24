@@ -117,7 +117,11 @@ class Files extends Component {
             <div className="items-list-items">
               {this.state.files.map((file, index) => (
                 <div id={file} className="file-container" key={index}>
-                  <File name={file} icon={faFileImage} />
+                  <File
+                    name={file}
+                    icon={faFileImage}
+                    image={`http://localhost:5000/files/file/${this.state.path}-${file}`}
+                  />
                 </div>
               ))}
             </div>
