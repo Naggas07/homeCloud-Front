@@ -1,29 +1,39 @@
 import React, { Component, Fragment } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-
-import AuthenticatedRoute from "../components/misc/autenticathedRoute";
+import Functionality from "./Functionalities";
 import { WithAuthConsumer } from "../context/auth.context";
 import "../styles/css/misc/home.css";
-import homeSearch from "./homeSearch";
+import { faTools } from "@fortawesome/free-solid-svg-icons/faTools";
+import { faFile } from "@fortawesome/free-solid-svg-icons/faFile";
 
-class Home extends Component {
+class HomeSearch extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      functionalities: [{ name: "Archivos", photo: faFile, path: "/files" }],
+    };
   }
 
+  componentDidMount() {
+    if (this.props.currentUser.data.userType === "Admin") {
+      this.setState({
+        functionalities: [
+          { name: "Admin", photo: faTools, path: "/admin" },
+          ...this.state.functionalities,
+        ],
+      });
+    }
+  }
   render() {
     return (
       <Fragment>
-        <Switch>
-          <AuthenticatedRoute exact path="/functionalities">
-            <homeSearch />
-          </AuthenticatedRoute>
-          {/* <Redirect to="/functionalities" /> */}
-        </Switch>
+        <div className="func-container">
+          {this.state.functionalities.map((item, index) => (
+            <Functionality key={index} func={item} />
+          ))}
+        </div>
       </Fragment>
     );
   }
 }
 
-export default WithAuthConsumer(Home);
+export default WithAuthConsumer(HomeSearch);

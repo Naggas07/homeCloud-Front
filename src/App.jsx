@@ -6,6 +6,8 @@ import Home from "./components/home";
 import AuthenticatedRoute from "./components/misc/autenticathedRoute";
 import NavBar from "./components/misc/navbar";
 import { WithAuthConsumer } from "./context/auth.context";
+import Admin from "./components/Admin";
+import Files from "./components/Files";
 
 function App() {
   return (
@@ -17,6 +19,12 @@ function App() {
         </Route>
         <AuthenticatedRoute exact path="/home">
           <Home />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute exact path="/Admin">
+          <Admin />
+        </AuthenticatedRoute>
+        <AuthenticatedRoute exact path="/files">
+          <Files />
         </AuthenticatedRoute>
         <Redirect to="/login" />
       </Switch>
