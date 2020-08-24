@@ -7,7 +7,7 @@ import { WithAuthConsumer } from "../../context/auth.context";
 
 const NavBar = ({ currentUser, logout }) => {
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${!currentUser ? "no-visual" : ""}`}>
       <div className="logoContainer">
         <a className="flex-center2" href="/home">
           <img className="navLogo" src={logo} alt="logo" />

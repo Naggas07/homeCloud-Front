@@ -17,6 +17,11 @@
   width: 40px;
 }
 
+.no-visual {
+  display: none;
+  visibility: hidden;
+}
+
 .navName {
   height: 100%;
   color: aliceblue;
