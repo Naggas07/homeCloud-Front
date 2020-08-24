@@ -39,6 +39,7 @@
   color: rgb(0, 180, 217, 1);
   font-size: 4rem;
   padding: 5%;
+  z-index: inherit;
 }
 
 .fileName {

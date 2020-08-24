@@ -34,10 +34,16 @@ class Files extends Component {
     }
   };
 
+  updateImage = (name) => {
+    let nextPath = this.state.path === "" ? name : `${this.state.path}-${name}`;
+    return !name ? "" : this.reload(nextPath);
+  };
+
   update = (event) => {
     const { id } = event.target;
+
     let nextPath = this.state.path === "" ? id : `${this.state.path}-${id}`;
-    console.log(id);
+
     return !id ? "" : this.reload(nextPath);
   };
 
@@ -85,7 +91,11 @@ class Files extends Component {
                   onClick={this.update}
                   key={index}
                 >
-                  <File name={folder} icon={faFolder} />
+                  <File
+                    name={folder}
+                    update={() => this.updateImage(folder)}
+                    icon={faFolder}
+                  />
                 </div>
               ))}
             </div>
