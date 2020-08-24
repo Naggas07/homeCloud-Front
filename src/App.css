@@ -39,6 +39,10 @@
 
 /* my css */
 
+* {
+  font-family: "Piedra", cursive;
+}
+
 .primary-button {
   background-color: #61dafb !important;
   border: aliceblue 2px solid !important;
