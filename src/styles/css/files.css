@@ -26,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 10%;
 }
 
 .file-container {
@@ -37,4 +38,9 @@
 .icon-list {
   color: rgb(0, 180, 217, 1);
   font-size: 4rem;
+  padding: 5%;
+}
+
+.fileName {
+  font-size: 1rem;
 }

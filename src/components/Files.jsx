@@ -4,6 +4,7 @@ import "../styles/css/files.css";
 import filesFoldersService from "../services/pathFilesServices";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowCircleLeft";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
+import { faFileImage } from "@fortawesome/free-solid-svg-icons/faFileImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import File from "./visual/file";
 
@@ -36,8 +37,8 @@ class Files extends Component {
   update = (event) => {
     const { id } = event.target;
     let nextPath = this.state.path === "" ? id : `${this.state.path}-${id}`;
-
-    this.reload(nextPath);
+    console.log(id);
+    return !id ? "" : this.reload(nextPath);
   };
 
   reload = (path) => {
@@ -74,7 +75,7 @@ class Files extends Component {
         {this.state.folders.length > 0 && (
           <div className="folders">
             <div className="header-list-items">
-              <h1>folders</h1>
+              <h1>carpetas</h1>
             </div>
             <div className="items-list-items">
               {this.state.folders.map((folder, index) => (
@@ -92,10 +93,16 @@ class Files extends Component {
         )}
         {this.state.files.length > 0 && (
           <div className="files">
-            <h1>Files</h1>
-            {this.state.files.map((file, index) => (
-              <h1 key={index}>{file}</h1>
-            ))}
+            <div className="header-list-items">
+              <h1>archivos</h1>
+            </div>
+            <div className="items-list-items">
+              {this.state.files.map((file, index) => (
+                <div id={file} className="file-container" key={index}>
+                  <File name={file} icon={faFileImage} />
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
