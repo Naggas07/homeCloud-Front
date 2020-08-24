@@ -41,5 +41,6 @@
 @media only screen and (min-width: 900px) {
   .navbar {
     height: 7vh;
+    padding: 0.5rem 2rem !important;
   }
 }
