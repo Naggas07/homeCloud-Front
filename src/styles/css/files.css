@@ -33,7 +33,7 @@
 
 .folder-header {
   position: sticky !important;
-  top: 10.1vh;
+  top: 10.05vh;
   background-color: white;
 }
 
@@ -76,6 +76,19 @@
 
 .title-border > h1 {
   margin-left: 15px;
+}
+
+.minus {
+  color: white;
+  width: 80%;
+  margin: 5% 10%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container-File:hover > .minus {
+  color: rgb(0, 180, 217, 1);
+  transition: all 1s ease-in;
 }
 
 @media only screen and (min-width: 600px) {

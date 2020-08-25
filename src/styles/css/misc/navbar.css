@@ -12,9 +12,6 @@
   align-items: center;
 }
 
-.logoContainer {
-}
-
 .navLogo {
   width: 40px;
 }
@@ -22,6 +19,7 @@
 .no-visual {
   display: none;
   visibility: hidden;
+  height: 0;
 }
 
 .navName {

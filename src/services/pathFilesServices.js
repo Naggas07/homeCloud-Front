@@ -11,9 +11,21 @@ const newFolder = (route, items) => {
   return http.post(routes, items).then((folder) => folder.data);
 };
 
+const deleteFolder = (route) => {
+  const routes = `/paths/delete/${route}`;
+
+  return http
+    .post(routes)
+    .then((res) => res)
+    .catch((err) => {
+      return { message: "Error deleting" };
+    });
+};
+
 let filesFoldersService = {
   getFolder,
   newFolder,
+  deleteFolder,
 };
 
 export default filesFoldersService;

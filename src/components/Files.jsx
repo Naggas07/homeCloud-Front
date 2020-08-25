@@ -74,6 +74,10 @@ class Files extends Component {
       );
   };
 
+  deleteFolder = (route) => {
+    filesFoldersService.deleteFolder(route).then((ok) => this.toReload());
+  };
+
   refresh = () => {
     this.reload(this.state.path);
   };
@@ -88,11 +92,13 @@ class Files extends Component {
           <p>
             /{this.state.path.length > 0 && this.state.path.replace("-", "/")}
           </p>
-          <FontAwesomeIcon
-            className="logo-back"
-            onClick={this.back}
-            icon={faArrowCircleLeft}
-          />
+          {this.state.path !== "" && (
+            <FontAwesomeIcon
+              className="logo-back"
+              onClick={this.back}
+              icon={faArrowCircleLeft}
+            />
+          )}
         </div>
 
         <div className="folders">
@@ -121,6 +127,10 @@ class Files extends Component {
                   name={folder}
                   update={() => this.updateImage(folder)}
                   icon={faFolder}
+                  deleteItem={() =>
+                    this.deleteFolder(`${this.state.path}-${folder}`)
+                  }
+                  less={this.state.path === "" ? false : true}
                 />
               </div>
             ))}
