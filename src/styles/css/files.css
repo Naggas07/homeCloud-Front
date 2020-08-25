@@ -25,10 +25,16 @@
 .items-list-items {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 10%;
+}
+
+.folder-header {
+  position: sticky !important;
+  top: 10.1vh;
+  background-color: white;
 }
 
 .file-container {
@@ -70,4 +76,22 @@
 
 .title-border > h1 {
   margin-left: 15px;
+}
+
+@media only screen and (min-width: 600px) {
+  .file-container {
+    width: 20%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .file-container {
+    width: 15%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .file-container {
+    width: 12%;
+  }
 }

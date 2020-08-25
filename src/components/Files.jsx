@@ -96,7 +96,7 @@ class Files extends Component {
         </div>
 
         <div className="folders">
-          <div className="header-list-items title-border">
+          <div className="header-list-items folder-header title-border">
             <h1 className="">
               {this.state.path === ""
                 ? "Carpetas"
