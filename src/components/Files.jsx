@@ -9,6 +9,7 @@ import { faFileImage } from "@fortawesome/free-solid-svg-icons/faFileImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import File from "./visual/file";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import NewFolderModal from "./visual/newFolderModal";
 
 class Files extends Component {
   constructor(props) {
@@ -104,6 +105,9 @@ class Files extends Component {
                 </div>
               ))}
             </div>
+            {this.state.path.length > 0 &&
+              this.state.path.split("-")[0] ===
+                this.props.currentUser.data.name && <NewFolderModal />}
           </div>
         )}
         {this.state.files.length > 0 && (
