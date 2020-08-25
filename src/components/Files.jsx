@@ -97,7 +97,11 @@ class Files extends Component {
 
         <div className="folders">
           <div className="header-list-items title-border">
-            <h1 className="">Carpetas</h1>
+            <h1 className="">
+              {this.state.path === ""
+                ? "Carpetas"
+                : this.state.path.split("-").reverse()[0]}
+            </h1>
             {this.state.path.length > 0 &&
               (this.state.path.split("-")[0] ===
                 this.props.currentUser.data.name ||

@@ -56,6 +56,7 @@ function NewFolderModal(props) {
                 placeholder="Nombre"
                 value={name}
                 onChange={handleChange}
+                autoComplete="off"
               />
             </Form.Group>
             <div className="right-flex">
