@@ -2,14 +2,13 @@ import http from "./global.items";
 
 const getFolder = (folderData) => {
   const route = `/paths/myPaths/${folderData}`;
-
   return http.get(route).then((folder) => folder.data);
 };
 
-const newFolder = (folderData) => {
-  const route = `/paths/myPaths/${folderData.route}`;
+const newFolder = (route, items) => {
+  const routes = `/paths/new/${route}`;
 
-  return http.post(route, folderData.name).then((folder) => folder.data);
+  return http.post(routes, items).then((folder) => folder.data);
 };
 
 let filesFoldersService = {

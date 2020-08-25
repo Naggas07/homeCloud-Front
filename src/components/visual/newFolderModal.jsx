@@ -3,10 +3,12 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import "../../styles/css/visual/newFolder.css";
+import filesFoldersService from "../../services/pathFilesServices";
 
-function NewFolderModal() {
+function NewFolderModal(props) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
+  const [route] = useState(props.path);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,6 +21,13 @@ function NewFolderModal() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    let items = {
+      name,
+    };
+    filesFoldersService.newFolder(route, items).then((ok) => {
+      handleClose();
+      props.reload();
+    });
   };
 
   return (

@@ -18,8 +18,15 @@ class Files extends Component {
       folders: this.props.currentUser.data.folders,
       files: [],
       errors: false,
+      reload: false,
     };
   }
+
+  toReload = () => {
+    this.setState({
+      reload: true,
+    });
+  };
 
   back = () => {
     const back = this.state.path.split("-");
@@ -57,7 +64,7 @@ class Files extends Component {
           path: path,
           folders: data.folders,
           files: data.files,
-          nextPath: "",
+          reload: false,
         });
       })
       .catch(() =>
@@ -67,7 +74,14 @@ class Files extends Component {
       );
   };
 
+  refresh = () => {
+    this.reload(this.state.path);
+  };
+
   render() {
+    if (this.state.reload) {
+      this.refresh();
+    }
     return (
       <div className="func-container">
         <div className="breads">
@@ -88,7 +102,7 @@ class Files extends Component {
               (this.state.path.split("-")[0] ===
                 this.props.currentUser.data.name ||
                 this.state.path.split("-")[0] === "shared") && (
-                <NewFolderModal />
+                <NewFolderModal reload={this.toReload} path={this.state.path} />
               )}
           </div>
           <div className="items-list-items">
