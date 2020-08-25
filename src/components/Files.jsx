@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import File from "./visual/file";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import NewFolderModal from "./visual/newFolderModal";
+import ErrorAlert from "./misc/errorAlert";
 
 class Files extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class Files extends Component {
       path: "",
       folders: this.props.currentUser.data.folders,
       files: [],
-      errors: false,
+      errors: {
+        deleteFolder: false,
+      },
       reload: false,
     };
   }
@@ -75,19 +78,40 @@ class Files extends Component {
   };
 
   deleteFolder = (route) => {
-    filesFoldersService.deleteFolder(route).then((ok) => this.toReload());
+    filesFoldersService.deleteFolder(route).then((ok) => {
+      if (ok.message) {
+        this.setState({
+          errors: { deleteFolder: true },
+        });
+      } else {
+        this.toReload();
+      }
+    });
   };
 
   refresh = () => {
     this.reload(this.state.path);
   };
 
+  resetErrors = () => {
+    this.setState({
+      errors: {},
+    });
+  };
+
   render() {
     if (this.state.reload) {
       this.refresh();
     }
+
     return (
       <div className="func-container">
+        {this.state.errors.deleteFolder && (
+          <ErrorAlert
+            message={"Error al borrar la carpeta, no está vacia"}
+            hide={() => this.resetErrors()}
+          />
+        )}
         <div className="breads">
           <p>
             /{this.state.path.length > 0 && this.state.path.replace("-", "/")}
