@@ -26,6 +26,7 @@ function NewFolderModal(props) {
     };
     filesFoldersService.newFolder(route, items).then((ok) => {
       handleClose();
+      setName("");
       props.reload();
     });
   };

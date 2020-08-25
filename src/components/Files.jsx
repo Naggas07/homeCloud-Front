@@ -155,6 +155,7 @@ class Files extends Component {
                     this.deleteFolder(`${this.state.path}-${folder}`)
                   }
                   less={this.state.path === "" ? false : true}
+                  path={this.state.path}
                 />
               </div>
             ))}

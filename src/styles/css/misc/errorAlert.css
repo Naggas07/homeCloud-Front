@@ -1,0 +1,5 @@
+.absolute {
+  position: sticky !important;
+  top: 11vh;
+  z-index: 0;
+}

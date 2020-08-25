@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Button } from "react-bootstrap";
+import "../../styles/css/misc/errorAlert.css";
 
 function ErrorAlert({ message, hide }) {
   const [show, setShow] = useState(true);
@@ -8,7 +9,12 @@ function ErrorAlert({ message, hide }) {
 
   if (show) {
     return (
-      <Alert variant="danger" onClose={() => hide()} dismissible>
+      <Alert
+        className="absolute"
+        variant="danger"
+        onClose={() => hide()}
+        dismissible
+      >
         {message}
       </Alert>
     );

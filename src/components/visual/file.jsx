@@ -1,12 +1,24 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import { WithAuthConsumer } from "../../context/auth.context";
 
-const File = ({ name, icon, update, image, deleteItem, less }) => {
+const File = ({
+  name,
+  icon,
+  update,
+  image,
+  deleteItem,
+  less,
+  currentUser,
+  path,
+}) => {
   return (
     <div className="container-File">
       <div className="minus">
-        {less && <FontAwesomeIcon onClick={deleteItem} icon={faMinus} />}
+        {less && currentUser.data.name === path.split("-")[0] && (
+          <FontAwesomeIcon onClick={deleteItem} icon={faMinus} />
+        )}
       </div>
 
       <div>
@@ -22,4 +34,4 @@ const File = ({ name, icon, update, image, deleteItem, less }) => {
   );
 };
 
-export default File;
+export default WithAuthConsumer(File);
