@@ -1,0 +1,11 @@
+.primaryBackground {
+  background-color: rgb(0, 180, 217, 1) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.right-flex {
+  width: 100%;
+  display: flex !important;
+  margin-left: 70%;
+}

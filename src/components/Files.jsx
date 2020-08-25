@@ -4,7 +4,6 @@ import "../styles/css/files.css";
 import filesFoldersService from "../services/pathFilesServices";
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons/faArrowCircleLeft";
 import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
-import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import { faFileImage } from "@fortawesome/free-solid-svg-icons/faFileImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import File from "./visual/file";
@@ -81,36 +80,39 @@ class Files extends Component {
             icon={faArrowCircleLeft}
           />
         </div>
-        {this.state.folders.length > 0 && (
-          <div className="folders">
-            <div className="header-list-items">
-              <h1>carpetas</h1>
-              {this.state.path.length > 0 &&
-                this.state.path.split("-")[0] ===
-                  this.props.currentUser.data.name && <NewFolderModal />}
-            </div>
-            <div className="items-list-items">
-              {this.state.folders.map((folder, index) => (
-                <div
-                  id={folder}
-                  className="file-container"
-                  onClick={this.update}
-                  key={index}
-                >
-                  <File
-                    name={folder}
-                    update={() => this.updateImage(folder)}
-                    icon={faFolder}
-                  />
-                </div>
-              ))}
-            </div>
+
+        <div className="folders">
+          <div className="header-list-items title-border">
+            <h1 className="">Carpetas</h1>
+            {this.state.path.length > 0 &&
+              (this.state.path.split("-")[0] ===
+                this.props.currentUser.data.name ||
+                this.state.path.split("-")[0] === "shared") && (
+                <NewFolderModal />
+              )}
           </div>
-        )}
-        {this.state.files.length > 0 && (
+          <div className="items-list-items">
+            {this.state.folders.map((folder, index) => (
+              <div
+                id={folder}
+                className="file-container"
+                onClick={this.update}
+                key={index}
+              >
+                <File
+                  name={folder}
+                  update={() => this.updateImage(folder)}
+                  icon={faFolder}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {this.state.path !== "" && (
           <div className="files">
-            <div className="header-list-items">
-              <h1>archivos</h1>
+            <div className="header-list-items title-border">
+              <h1 className="">Archivos</h1>
               {this.state.path !== "" && (
                 <FontAwesomeIcon className="add-icon" icon={faPlus} />
               )}

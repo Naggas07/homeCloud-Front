@@ -63,3 +63,11 @@
   color: rgb(0, 180, 217, 1);
   margin: 5px 10px;
 }
+
+.title-border {
+  border-bottom: 1px solid rgb(181, 181, 181);
+}
+
+.title-border > h1 {
+  margin-left: 15px;
+}
