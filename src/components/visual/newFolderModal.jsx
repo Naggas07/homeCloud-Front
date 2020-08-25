@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 
 function NewFolderModal() {
   const [show, setShow] = useState(false);
@@ -9,9 +11,11 @@ function NewFolderModal() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
+      <FontAwesomeIcon
+        className="add-icon"
+        icon={faFolderPlus}
+        onClick={handleShow}
+      />
 
       <Modal
         show={show}
@@ -20,15 +24,15 @@ function NewFolderModal() {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Añadir carpeta</Modal.Title>
         </Modal.Header>
         <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            cerrar
           </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            crear carpeta
           </Button>
         </Modal.Footer>
       </Modal>

@@ -85,9 +85,9 @@ class Files extends Component {
           <div className="folders">
             <div className="header-list-items">
               <h1>carpetas</h1>
-              {this.state.path !== "" && (
-                <FontAwesomeIcon className="add-icon" icon={faFolderPlus} />
-              )}
+              {this.state.path.length > 0 &&
+                this.state.path.split("-")[0] ===
+                  this.props.currentUser.data.name && <NewFolderModal />}
             </div>
             <div className="items-list-items">
               {this.state.folders.map((folder, index) => (
@@ -105,9 +105,6 @@ class Files extends Component {
                 </div>
               ))}
             </div>
-            {this.state.path.length > 0 &&
-              this.state.path.split("-")[0] ===
-                this.props.currentUser.data.name && <NewFolderModal />}
           </div>
         )}
         {this.state.files.length > 0 && (
