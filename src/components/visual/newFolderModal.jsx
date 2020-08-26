@@ -12,8 +12,6 @@ function NewFolderModal(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(props.path);
-
   const handleChange = (event) => {
     const { value } = event.target;
 

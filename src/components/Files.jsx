@@ -114,7 +114,8 @@ class Files extends Component {
         )}
         <div className="breads">
           <p>
-            /{this.state.path.length > 0 && this.state.path.replace("-", "/")}
+            /
+            {this.state.path.length > 0 && this.state.path.split("-").join("/")}
           </p>
           {this.state.path !== "" && (
             <FontAwesomeIcon
