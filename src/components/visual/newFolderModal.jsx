@@ -8,10 +8,11 @@ import filesFoldersService from "../../services/pathFilesServices";
 function NewFolderModal(props) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
-  const [route] = useState(props.path);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  console.log(props.path);
 
   const handleChange = (event) => {
     const { value } = event.target;
@@ -24,7 +25,7 @@ function NewFolderModal(props) {
     let items = {
       name,
     };
-    filesFoldersService.newFolder(route, items).then((ok) => {
+    filesFoldersService.newFolder(props.path, items).then((ok) => {
       handleClose();
       setName("");
       props.reload();
