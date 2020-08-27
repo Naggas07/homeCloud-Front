@@ -177,7 +177,7 @@ class Files extends Component {
                   <File
                     name={file}
                     icon={faFileImage}
-                    image={`http://localhost:5000/files/file/${this.state.path}-${file}`}
+                    image={`${process.env.REACT_APP_API}/files/file/${this.state.path}-${file}`}
                   />
                 </div>
               ))}

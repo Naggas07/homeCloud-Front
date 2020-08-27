@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = process.env.REACT_APP_API || "http://localhost:5000";
+const API = process.env.REACT_APP_API;
 
 console.log(API);
 

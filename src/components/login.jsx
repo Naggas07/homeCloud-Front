@@ -4,6 +4,8 @@ import logo from "../styles/images/cloud-icon.png";
 import { WithAuthConsumer } from "../context/auth.context";
 import { Redirect } from "react-router-dom";
 import userServices from "../services/user.services";
+import { faCopyright } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Login extends Component {
   constructor(props) {
@@ -93,6 +95,13 @@ class Login extends Component {
               </button>
             </form>
           </div>
+        </div>
+        <div className="footer-copy">
+          <h6>
+            Copyright
+            <FontAwesomeIcon icon={faCopyright} />
+            2020 - NaggasDev
+          </h6>
         </div>
       </div>
     );

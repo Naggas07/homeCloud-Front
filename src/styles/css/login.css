@@ -36,3 +36,15 @@
 .padding-0 {
   text-align: start;
 }
+
+.footer-copy {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 95vh;
+}
+
+.footer-copy > h6 {
+  font-size: 0.7rem;
+}
