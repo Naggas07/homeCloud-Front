@@ -31,7 +31,7 @@
   margin-bottom: 10%;
 }
 
-.folder-header {
+.header-list-items:first-of-type {
   position: sticky !important;
   top: 10.05vh;
   background-color: white;

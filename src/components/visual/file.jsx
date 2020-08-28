@@ -1,7 +1,14 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faVideo, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMinus,
+  faVideo,
+  faFilePdf,
+  faFileExcel,
+  faFileCsv,
+} from "@fortawesome/free-solid-svg-icons";
 import { WithAuthConsumer } from "../../context/auth.context";
+import "../../styles/css/visual/extensions-Colors.css";
 
 const File = ({
   name,
@@ -14,7 +21,7 @@ const File = ({
   path,
 }) => {
   let srcIcon;
-
+  let iconStyle = "";
   let extension = name.split(".").reverse()[0];
 
   switch (extension) {
@@ -23,6 +30,19 @@ const File = ({
       break;
     case "pdf":
       srcIcon = faFilePdf;
+      iconStyle = "pdf";
+      break;
+    case "xlsx":
+      srcIcon = faFileExcel;
+      iconStyle = "excel";
+      break;
+    case "xls":
+      srcIcon = faFileExcel;
+      iconStyle = "excel";
+      break;
+    case "csv":
+      srcIcon = faFileCsv;
+      iconStyle = "excel";
       break;
     default:
       srcIcon = null;
@@ -36,13 +56,17 @@ const File = ({
       return (
         <FontAwesomeIcon
           onClick={update}
-          className="icon-list"
+          className={`icon-list ${iconStyle}`}
           icon={srcIcon}
         />
       );
     } else {
       return (
-        <FontAwesomeIcon onClick={update} className="icon-list" icon={icon} />
+        <FontAwesomeIcon
+          onClick={update}
+          className={`icon-list ${iconStyle}`}
+          icon={icon}
+        />
       );
     }
   };
