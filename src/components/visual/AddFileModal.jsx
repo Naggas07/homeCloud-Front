@@ -12,7 +12,7 @@ const AddFileModal = (props) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const dataForm = new FormData();
+  let dataForm = new FormData();
 
   const handleChange = (event) => {
     const { files } = event.target;
@@ -20,21 +20,25 @@ const AddFileModal = (props) => {
     for (let i = 0; i < files.length; i++) {
       dataForm.append("file", files[i]);
     }
-
-    setItems(files.length);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    console.log("Entra");
+
     filesFoldersService
       .uploadFiles(props.path, dataForm)
       .then((ok) => {
         console.log("entra al ok");
-        props.reload();
+        setItems(0);
         handleClose();
+        props.reload();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setItems(0);
+        return console.log(err);
+      });
   };
 
   return (
@@ -60,7 +64,9 @@ const AddFileModal = (props) => {
               <Form.File
                 name="upload-files"
                 id="custom-file"
-                label={items ? `${items} archivos agregados` : "..."}
+                label={
+                  items ? `${items} archivos agregados` : "Introduce archivos"
+                }
                 data-browse="subir Archivos"
                 multiple
                 onChange={handleChange}
