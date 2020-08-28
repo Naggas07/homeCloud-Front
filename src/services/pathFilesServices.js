@@ -22,10 +22,22 @@ const deleteFolder = (route) => {
     });
 };
 
+const uploadFiles = (route, items) => {
+  const routes = `/files/upload/${route}`;
+
+  return http
+    .post(routes, items)
+    .then((res) => res)
+    .catch((err) => {
+      return { message: "Error uploading files" };
+    });
+};
+
 let filesFoldersService = {
   getFolder,
   newFolder,
   deleteFolder,
+  uploadFiles,
 };
 
 export default filesFoldersService;

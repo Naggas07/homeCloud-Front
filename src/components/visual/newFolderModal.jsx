@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
-import "../../styles/css/visual/newFolder.css";
+import "../../styles/css/visual/Modals.css";
 import filesFoldersService from "../../services/pathFilesServices";
 
 function NewFolderModal(props) {
@@ -61,7 +61,7 @@ function NewFolderModal(props) {
             </Form.Group>
             <div className="right-flex">
               <Button className="primaryBackground" type="submit">
-                Crear carpeta
+                <FontAwesomeIcon icon={faFolderPlus} /> Crear carpeta
               </Button>
             </div>
           </Form>

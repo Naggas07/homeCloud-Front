@@ -7,7 +7,6 @@ import { faFolder } from "@fortawesome/free-solid-svg-icons/faFolder";
 import { faFileImage } from "@fortawesome/free-solid-svg-icons/faFileImage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import File from "./visual/file";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import NewFolderModal from "./visual/newFolderModal";
 import ErrorAlert from "./misc/errorAlert";
 import AddFileModal from "./visual/AddFileModal";
@@ -173,7 +172,7 @@ class Files extends Component {
             <div className="header-list-items title-border">
               <h1 className="">Archivos</h1>
               {this.state.path !== "" && this.itsHisFolder() && (
-                <AddFileModal />
+                <AddFileModal reload={this.toReload} path={this.state.path} />
               )}
             </div>
             <div className="items-list-items">

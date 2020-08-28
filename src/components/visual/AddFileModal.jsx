@@ -1,19 +1,46 @@
 import React, { useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import filesFoldersService from "../../services/pathFilesServices";
 
 const AddFileModal = (props) => {
   const [show, setShow] = useState(false);
-  const [fileName, setFileName] = useState("");
+
+  const [items, setItems] = useState(0);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const dataForm = new FormData();
+
+  const handleChange = (event) => {
+    const { files } = event.target;
+
+    for (let i = 0; i < files.length; i++) {
+      dataForm.append("file", files[i]);
+    }
+
+    setItems(files.length);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    filesFoldersService
+      .uploadFiles(props.path, dataForm)
+      .then((ok) => {
+        console.log("entra al ok");
+        props.reload();
+        handleClose();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <>
       <FontAwesomeIcon
-        icon={faPlus}
+        icon={faUpload}
         className="add-icon"
         onClick={handleShow}
       />
@@ -24,18 +51,28 @@ const AddFileModal = (props) => {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            Modal heading
-          </Modal.Title>
+        <Modal.Header className="primaryBackground" closeButton>
+          <Modal.Title>Añadir Archivo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.File
+                name="upload-files"
+                id="custom-file"
+                label={items ? `${items} archivos agregados` : "..."}
+                data-browse="subir Archivos"
+                multiple
+                onChange={handleChange}
+                custom
+              />
+            </Form.Group>
+            <div className="right-flex">
+              <Button className="primaryBackground submit-button" type="submit">
+                <FontAwesomeIcon icon={faUpload} /> Subir archivos
+              </Button>
+            </div>
+          </Form>
         </Modal.Body>
       </Modal>
     </>
