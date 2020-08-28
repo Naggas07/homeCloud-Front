@@ -25,12 +25,9 @@ const AddFileModal = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log("Entra");
-
     filesFoldersService
       .uploadFiles(props.path, dataForm)
       .then((ok) => {
-        console.log("entra al ok");
         setItems(0);
         handleClose();
         props.reload();
