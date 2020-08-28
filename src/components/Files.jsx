@@ -10,6 +10,7 @@ import File from "./visual/file";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import NewFolderModal from "./visual/newFolderModal";
 import ErrorAlert from "./misc/errorAlert";
+import AddFileModal from "./visual/AddFileModal";
 
 class Files extends Component {
   constructor(props) {
@@ -172,7 +173,7 @@ class Files extends Component {
             <div className="header-list-items title-border">
               <h1 className="">Archivos</h1>
               {this.state.path !== "" && this.itsHisFolder() && (
-                <FontAwesomeIcon className="add-icon" icon={faPlus} />
+                <AddFileModal />
               )}
             </div>
             <div className="items-list-items">
