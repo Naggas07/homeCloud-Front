@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faVideo, faFilePdf } from "@fortawesome/free-solid-svg-icons";
 import { WithAuthConsumer } from "../../context/auth.context";
 
 const File = ({
@@ -13,6 +13,40 @@ const File = ({
   currentUser,
   path,
 }) => {
+  let srcIcon;
+
+  let extension = name.split(".").reverse()[0];
+
+  switch (extension) {
+    case "mp4":
+      srcIcon = faVideo;
+      break;
+    case "pdf":
+      srcIcon = faFilePdf;
+      break;
+    default:
+      srcIcon = null;
+      break;
+  }
+
+  const iconToShow = () => {
+    if (image && !srcIcon) {
+      return <img className="image-list" src={image} alt="imagen" />;
+    } else if (image && srcIcon) {
+      return (
+        <FontAwesomeIcon
+          onClick={update}
+          className="icon-list"
+          icon={srcIcon}
+        />
+      );
+    } else {
+      return (
+        <FontAwesomeIcon onClick={update} className="icon-list" icon={icon} />
+      );
+    }
+  };
+
   return (
     <div className="container-File">
       <div className="minus">
@@ -22,10 +56,8 @@ const File = ({
       </div>
 
       <div>
-        {image && <img className="image-list" src={image} alt="imagen" />}
-        {!image && (
-          <FontAwesomeIcon onClick={update} className="icon-list" icon={icon} />
-        )}
+        {iconToShow()}
+
         <h4 onClick={update} className="fileName pb-2">
           {name}
         </h4>
