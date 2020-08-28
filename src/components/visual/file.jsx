@@ -6,6 +6,8 @@ import {
   faFilePdf,
   faFileExcel,
   faFileCsv,
+  faFileAlt,
+  faFile,
 } from "@fortawesome/free-solid-svg-icons";
 import { WithAuthConsumer } from "../../context/auth.context";
 import "../../styles/css/visual/extensions-Colors.css";
@@ -44,13 +46,16 @@ const File = ({
       srcIcon = faFileCsv;
       iconStyle = "excel";
       break;
+    case "txt":
+      srcIcon = faFileAlt;
+      break;
     default:
-      srcIcon = null;
+      srcIcon = faFile;
       break;
   }
 
   const iconToShow = () => {
-    if (image && !srcIcon) {
+    if (extension === "jpg" || extension === "jpeg" || extension === "png") {
       return <img className="image-list" src={image} alt="imagen" />;
     } else if (image && srcIcon) {
       return (
