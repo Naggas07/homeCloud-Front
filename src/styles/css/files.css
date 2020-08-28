@@ -62,6 +62,7 @@
 
 .fileName {
   font-size: 1rem;
+  overflow: scroll;
 }
 
 .add-icon {
