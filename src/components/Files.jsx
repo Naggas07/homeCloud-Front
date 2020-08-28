@@ -99,6 +99,13 @@ class Files extends Component {
     });
   };
 
+  itsHisFolder = () => {
+    return (
+      this.state.path.split("-")[0] === this.props.currentUser.data.name ||
+      this.state.path.split("-")[0] === "shared"
+    );
+  };
+
   render() {
     if (this.state.reload) {
       this.refresh();
@@ -133,12 +140,9 @@ class Files extends Component {
                 ? "Carpetas"
                 : this.state.path.split("-").reverse()[0]}
             </h1>
-            {this.state.path.length > 0 &&
-              (this.state.path.split("-")[0] ===
-                this.props.currentUser.data.name ||
-                this.state.path.split("-")[0] === "shared") && (
-                <NewFolderModal reload={this.toReload} path={this.state.path} />
-              )}
+            {this.state.path.length > 0 && this.itsHisFolder() && (
+              <NewFolderModal reload={this.toReload} path={this.state.path} />
+            )}
           </div>
           <div className="items-list-items">
             {this.state.folders.map((folder, index) => (
@@ -167,7 +171,7 @@ class Files extends Component {
           <div className="files">
             <div className="header-list-items title-border">
               <h1 className="">Archivos</h1>
-              {this.state.path !== "" && (
+              {this.state.path !== "" && this.itsHisFolder() && (
                 <FontAwesomeIcon className="add-icon" icon={faPlus} />
               )}
             </div>
