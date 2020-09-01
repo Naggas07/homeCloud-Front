@@ -7,7 +7,6 @@ const getFolder = (folderData) => {
 
 const newFolder = (route, items) => {
   const routes = `/paths/new/${route}`;
-
   return http.post(routes, items).then((folder) => folder.data);
 };
 

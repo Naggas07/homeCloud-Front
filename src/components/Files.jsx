@@ -20,6 +20,7 @@ class Files extends Component {
       files: [],
       errors: {
         deleteFolder: false,
+        createFolder: false,
       },
       reload: false,
     };
@@ -89,6 +90,18 @@ class Files extends Component {
     });
   };
 
+  createFolder = (path, folder) => {
+    filesFoldersService.newFolder(path, folder).then((ok) => {
+      if (ok.message) {
+        this.setState({
+          errors: { createFolder: true },
+        });
+      } else {
+        this.toReload();
+      }
+    });
+  };
+
   refresh = () => {
     this.reload(this.state.path);
   };
@@ -119,6 +132,14 @@ class Files extends Component {
             hide={() => this.resetErrors()}
           />
         )}
+        {this.state.errors.createFolder && (
+          <ErrorAlert
+            message={
+              "Error al crear la carpeta, es posible que el nombre de la carpeta ya exista"
+            }
+            hide={() => this.resetErrors()}
+          />
+        )}
         <div className="breads">
           <p>
             /
@@ -141,7 +162,11 @@ class Files extends Component {
                 : this.state.path.split("-").reverse()[0]}
             </h1>
             {this.state.path.length > 0 && this.itsHisFolder() && (
-              <NewFolderModal reload={this.toReload} path={this.state.path} />
+              <NewFolderModal
+                createFolder={this.createFolder}
+                reload={this.toReload}
+                path={this.state.path}
+              />
             )}
           </div>
           <div className="items-list-items">

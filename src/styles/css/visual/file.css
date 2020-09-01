@@ -15,7 +15,7 @@
 .image-footer {
   min-height: 40px !important;
   max-height: 40px !important;
-  padding: 10px 10px !important;
+  padding: 12px 2px !important;
   overflow: scroll;
   border: none !important;
 }

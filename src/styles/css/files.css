@@ -32,9 +32,11 @@
 }
 
 .header-list-items:first-of-type {
+  padding: 10px;
   position: sticky !important;
   top: 10.05vh;
   background-color: white;
+  z-index: 99;
 }
 
 .file-container {
@@ -59,7 +61,6 @@
   height: 200px;
   min-height: 200px;
   overflow: hidden;
-  z-index: inherit;
 }
 
 .imageContainer {

@@ -3,7 +3,6 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFolderPlus } from "@fortawesome/free-solid-svg-icons/faFolderPlus";
 import "../../styles/css/visual/Modals.css";
-import filesFoldersService from "../../services/pathFilesServices";
 
 function NewFolderModal(props) {
   const [show, setShow] = useState(false);
@@ -20,14 +19,14 @@ function NewFolderModal(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let items = {
+    let folder = {
       name,
     };
-    filesFoldersService.newFolder(props.path, items).then((ok) => {
-      handleClose();
-      setName("");
-      props.reload();
-    });
+
+    props.createFolder(props.path, folder);
+    handleClose();
+    setName("");
+    props.reload();
   };
 
   return (

@@ -60,7 +60,7 @@ const File = ({
     if (extension === "jpg" || extension === "jpeg" || extension === "png") {
       return (
         <div className="image-item">
-          <Card.Img src={image} alt="imagen" fluid />
+          <Card.Img src={image} alt="imagen" />
         </div>
       );
     } else if (image && srcIcon) {
