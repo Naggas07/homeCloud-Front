@@ -11,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { WithAuthConsumer } from "../../context/auth.context";
 import "../../styles/css/visual/extensions-Colors.css";
+import "../../styles/css/visual/file.css";
+import { Card } from "react-bootstrap";
 
 const File = ({
   name,
@@ -56,42 +58,46 @@ const File = ({
 
   const iconToShow = () => {
     if (extension === "jpg" || extension === "jpeg" || extension === "png") {
-      return <img className="image-list" src={image} alt="imagen" />;
+      return (
+        <div className="image-item">
+          <Card.Img src={image} alt="imagen" fluid />
+        </div>
+      );
     } else if (image && srcIcon) {
       return (
-        <FontAwesomeIcon
-          onClick={update}
-          className={`icon-list ${iconStyle}`}
-          icon={srcIcon}
-        />
+        <Card.Body className="image-item">
+          <FontAwesomeIcon
+            onClick={update}
+            className={`icon-list ${iconStyle}`}
+            icon={srcIcon}
+          />
+        </Card.Body>
       );
     } else {
       return (
-        <FontAwesomeIcon
-          onClick={update}
-          className={`icon-list ${iconStyle}`}
-          icon={icon}
-        />
+        <Card.Body className="image-item">
+          <FontAwesomeIcon
+            onClick={update}
+            className={`icon-list ${iconStyle}`}
+            icon={icon}
+          />
+        </Card.Body>
       );
     }
   };
 
+  let iconShow = iconToShow();
+
   return (
-    <div className="container-File">
+    <Card className="container-File">
       <div className="minus">
         {less && currentUser.data.name === path.split("-")[0] && (
           <FontAwesomeIcon onClick={deleteItem} icon={faMinus} />
         )}
       </div>
-
-      <div>
-        {iconToShow()}
-
-        <h4 onClick={update} className="fileName pb-2">
-          {name}
-        </h4>
-      </div>
-    </div>
+      {iconShow}
+      <Card.Footer className="image-footer">{name}</Card.Footer>
+    </Card>
   );
 };
 

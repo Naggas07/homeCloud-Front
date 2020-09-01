@@ -55,9 +55,23 @@
   z-index: inherit;
 }
 
+.file-container {
+  height: 200px;
+  min-height: 200px;
+  overflow: hidden;
+  z-index: inherit;
+}
+
+.imageContainer {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  overflow: hidden;
+}
 .image-list {
-  width: 70px;
-  height: 70px;
+  width: 100%;
 }
 
 .fileName {

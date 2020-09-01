@@ -1,0 +1,28 @@
+.minus {
+  max-height: 15px !important;
+  min-height: 15px !important;
+}
+
+.image-item {
+  min-height: 120px !important;
+  max-height: 120px !important;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-footer {
+  min-height: 40px !important;
+  max-height: 40px !important;
+  padding: 10px 10px !important;
+  overflow: scroll;
+  border: none !important;
+}
+
+.card-footer {
+  background-color: white !important;
+}
+.container-File {
+  border: none !important;
+}
