@@ -10,7 +10,10 @@ class HomeSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      functionalities: [{ name: "Archivos", photo: faFile, path: "/files" }],
+      functionalities: [
+        { name: "Antiguos", photo: faFile, path: "/files" },
+        { name: "Archivos", photo: faFile, path: "/folders" },
+      ],
     };
   }
 

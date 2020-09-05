@@ -1,7 +1,7 @@
 import http from "./global.items";
 
 const getFolder = (folderData) => {
-  const route = `/paths/myPaths/${folderData}`;
+  const route = `/paths/path/${folderData}`;
   return http.get(route).then((folder) => folder.data);
 };
 
