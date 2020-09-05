@@ -26,7 +26,7 @@ const File = ({
 }) => {
   let srcIcon;
   let iconStyle = "";
-  let extension = name.split(".").reverse()[0];
+  let extension = name.includes(".") ? name.split(".").reverse()[0] : null;
 
   switch (extension) {
     case "mp4":
@@ -87,8 +87,9 @@ const File = ({
   };
 
   let iconShow = iconToShow();
-
+  console.log(name.name);
   return (
+    // <h1>Hola</h1>
     <Card className="container-File">
       <div className="minus">
         {less && currentUser.data.name === path.split("-")[0] && (
