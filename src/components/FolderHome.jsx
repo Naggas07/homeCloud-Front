@@ -21,6 +21,10 @@ class FolderHome extends Component {
     });
   }
 
+  reload = () => this.setState({ reload: true });
+
+  //pending to create next step
+
   render() {
     return (
       <div className="func-container">
