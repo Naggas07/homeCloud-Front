@@ -87,9 +87,8 @@ const File = ({
   };
 
   let iconShow = iconToShow();
-  console.log(name.name);
+
   return (
-    // <h1>Hola</h1>
     <Card className="container-File">
       <div className="minus">
         {less && currentUser.data.name === path.split("-")[0] && (

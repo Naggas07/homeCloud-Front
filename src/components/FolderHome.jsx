@@ -9,9 +9,11 @@ class FolderHome extends Component {
     this.state = {
       path: "-",
       files: [],
-      folder: [],
+      folder: {},
       reload: false,
-      errors: null,
+      errors: {
+        folders: false,
+      },
     };
   }
 
@@ -21,11 +23,33 @@ class FolderHome extends Component {
     });
   }
 
-  reload = () => this.setState({ reload: true });
+  reload = (id) => {
+    filesFoldersService
+      .getFolder(id)
+      .then((folder) => {
+        this.setState({
+          path: folder.path,
+          folders: folder.childs,
+          files: folder.files,
+          reload: false,
+        });
+      })
+      .catch(() => this.setState({ errors: { folders: true } }));
+  };
+
+  toReload = () => this.setState({ reload: true });
+
+  refresh = () => {
+    this.state.reload(this.state.folder.id);
+  };
 
   //pending to create next step
 
   render() {
+    if (this.state.reload) {
+      this.refresh();
+    }
+
     return (
       <div className="func-container">
         <div className="breads"></div>
